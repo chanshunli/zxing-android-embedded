@@ -1,6 +1,7 @@
 ## Building locally => 本地Maven安装Gradle的库  
 
-* `[com.journeyapps/zxing-android-embedded "3.6.0" :extension "aar"]` OK
+#### `[com.journeyapps/zxing-android-embedded "3.6.0" :extension "aar"]` OK
+
 
     ./gradlew assemble
 
@@ -14,6 +15,64 @@ You can then use your local version by specifying in your `build.gradle` file:
         mavenLocal()
     }
     
+### Move local aar to `/Users/stevechan/Library/Android/sdk/extras/android/m2repository/`
+    
+```bash
+
+➜  zxing-android-embedded cat maven-metadata-local.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.journeyapps</groupId>
+  <artifactId>zxing-android-embedded</artifactId>
+  <versioning>
+    <release>3.6.0</release>
+    <versions>
+      <version>3.6.0</version>
+    </versions>
+    <lastUpdated>20180407055741</lastUpdated>
+  </versioning>
+</metadata>
+➜  zxing-android-embedded ls  -lh  maven-metadata-local.xml
+-rw-r--r--  1 stevechan  staff   317B  4  7 13:57 maven-metadata-local.xml
+➜  zxing-android-embedded
+➜  zxing-android-embedded ls
+3.5.0                    3.6.0                    maven-metadata-local.xml
+➜  zxing-android-embedded tree
+.
+├── 3.5.0
+├── 3.6.0
+│   ├── zxing-android-embedded-3.6.0-sources.jar
+│   ├── zxing-android-embedded-3.6.0.aar
+│   └── zxing-android-embedded-3.6.0.pom
+└── maven-metadata-local.xml
+
+2 directories, 4 files
+➜  zxing-android-embedded pwd
+/Users/stevechan/.m2/repository/com/journeyapps/zxing-android-embedded
+➜  zxing-android-embedded ls
+3.5.0                    3.6.0                    maven-metadata-local.xml
+➜  zxing-android-embedded cp -r * /Users/stevechan/Library/Android/sdk/extras/android/m2repository/com/journeyapps/zxing-android-embedded/
+➜  zxing-android-embedded
+
+```
+
+```bash
+
+➜  zxing-android-embedded cd /Users/stevechan/Library/Android/sdk/extras/android/m2repository
+➜  m2repository ls
+NOTICE.txt        com               package.xml       source.properties
+➜  m2repository fg zxing-android-embedded
+➜  m2repository fg zxing-android-embedded
+➜  m2repository fg "*zxing-android-embedded*"
+➜  m2repository
+➜  m2repository ls
+NOTICE.txt        com               package.xml       source.properties
+➜  m2repository cd com
+➜  com ls
+android
+➜  com mkdir -p journeyapps/zxing-android-embedded
+
+```
 -----
 
 # ZXing Android Embedded
