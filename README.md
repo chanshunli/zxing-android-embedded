@@ -1,3 +1,21 @@
+## Building locally => 本地Maven安装Gradle的库  
+
+* `[com.journeyapps/zxing-android-embedded "3.6.0" :extension "aar"]` OK
+
+    ./gradlew assemble
+
+To deploy the artifacts the your local Maven repository:
+
+    ./gradlew publishToMavenLocal
+
+You can then use your local version by specifying in your `build.gradle` file:
+
+    repositories {
+        mavenLocal()
+    }
+    
+-----
+
 # ZXing Android Embedded
 
 Barcode scanning library for Android, using [ZXing][2] for decoding.
