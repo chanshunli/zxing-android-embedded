@@ -15,7 +15,62 @@ You can then use your local version by specifying in your `build.gradle` file:
         mavenLocal()
     }
     
-### Move local aar to `/Users/stevechan/Library/Android/sdk/extras/android/m2repository/`
+### 1. Android Studio Shell
+
+```bash
+
+➜  zxing-android-embedded git:(master) ✗ 
+➜  zxing-android-embedded git:(master) ✗ ls
+CHANGES.md                    ISSUE_TEMPLATE.md             build.gradle                  gradlew                       proguard-android-optimize.txt settings.gradle
+COPYING                       README.md                     gradle                        gradlew.bat                   sample                        zxing-android-embedded
+EMBEDDING.md                  build                         gradle.properties             local.properties              sample-nosupport              zxing-android-embedded.iml
+➜  zxing-android-embedded git:(master) ✗ pwd
+/Users/stevechan/AndroidLib/zxing-android-embedded
+➜  zxing-android-embedded git:(master) ✗ ./gradlew assemble
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+> Configure project :sample
+Specify keystore.file, keystore.alias and keystore.password in local.properties to enable release signing.
+Configuration 'compile' in project ':sample' is deprecated. Use 'implementation' instead.
+Configuration 'debugCompile' in project ':sample' is deprecated. Use 'debugImplementation' instead.
+Configuration 'releaseCompile' in project ':sample' is deprecated. Use 'releaseImplementation' instead.
+
+> Configure project :sample-nosupport
+Configuration 'compile' in project ':sample-nosupport' is deprecated. Use 'implementation' instead.
+
+> Configure project :zxing-android-embedded
+Configuration 'compile' in project ':zxing-android-embedded' is deprecated. Use 'implementation' instead.
+Configuration 'testCompile' in project ':zxing-android-embedded' is deprecated. Use 'testImplementation' instead.
+
+.................
+
+BUILD SUCCESSFUL in 37s
+152 actionable tasks: 152 executed
+
+➜  zxing-android-embedded git:(master) ✗ ./gradlew publishToMavenLocal
+
+> Configure project :sample
+Specify keystore.file, keystore.alias and keystore.password in local.properties to enable release signing.
+Configuration 'compile' in project ':sample' is deprecated. Use 'implementation' instead.
+Configuration 'debugCompile' in project ':sample' is deprecated. Use 'debugImplementation' instead.
+Configuration 'releaseCompile' in project ':sample' is deprecated. Use 'releaseImplementation' instead.
+
+> Configure project :sample-nosupport
+Configuration 'compile' in project ':sample-nosupport' is deprecated. Use 'implementation' instead.
+
+> Configure project :zxing-android-embedded
+Configuration 'compile' in project ':zxing-android-embedded' is deprecated. Use 'implementation' instead.
+Configuration 'testCompile' in project ':zxing-android-embedded' is deprecated. Use 'testImplementation' instead.
+
+
+BUILD SUCCESSFUL in 1s
+27 actionable tasks: 3 executed, 24 up-to-date
+➜  zxing-android-embedded git:(master) ✗ 
+
+
+```
+
+### 2. Move local aar to `/Users/stevechan/Library/Android/sdk/extras/android/m2repository/`
     
 ```bash
 
